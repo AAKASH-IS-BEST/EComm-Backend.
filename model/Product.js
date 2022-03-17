@@ -1,7 +1,6 @@
-const { default: mongoose } = require("mongoose");
-const mongose = require("mongoose");
+const mongoose = require("mongoose");
 
-const productSchema = mongose.Schema({
+const productSchema = mongoose.Schema({
     productId: {
         type: String,
         required: [ true, "Please provide a Product-id !!"],
@@ -17,9 +16,21 @@ const productSchema = mongose.Schema({
     productDescription: {
         type: String,
         required: [ true, "Please provide a Product-description !!"],
-        maxlength: [ 40, "Product-description should be under 40 characters !!"],
+        maxlength: [ 500, "Product-description should be under 40 characters !!"],
         minlength: [ 3, "Product-description should be of atleast 3 character !!"],
     },
+    productPhotos: [
+        {
+            photoId: {
+                type: String,
+                required: true,
+            },
+            securedURL: {
+                type: String,
+                required: true,
+            },
+        }
+    ],
     productStatus: {
         type: String,
         enum: [ "Active", "Inactive" ],
@@ -35,7 +46,6 @@ const productSchema = mongose.Schema({
         default: Date.now,
         required: true,
     },
- 
 });
 
 module.exports = mongoose.model( "Product", productSchema );
