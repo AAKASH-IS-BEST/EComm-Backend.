@@ -11,8 +11,12 @@ router.route("/products").get( getAllProductsFromAllCategories );
 
 router.route("/product").post( addProduct );
 
-router.route("/product/:id").put( updateProduct );
+router.route("/product/:categoryId/:productId").put( updateProduct );
 
-router.route("/product/:id").delete( deleteProduct );
+router.route("/product/add-image/:productId").put(  );
+
+router.route("/product/delete-image/:productId").delete(  );
+
+router.route("/product/:categoryId/:productId").delete( deleteProduct );
 
 module.exports = router;

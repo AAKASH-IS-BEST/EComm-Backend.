@@ -36,6 +36,13 @@ const productSchema = mongoose.Schema({
         enum: [ "Active", "Inactive" ],
         default: "Active",
     },
+    productStartedAt: {
+        type: Date,
+        default: Date.now,
+    },
+    productEndAt: {
+        type: Date,
+    },
     productCreatedAt: {
         type: Date,
         default: Date.now,
