@@ -114,9 +114,16 @@ exports.getCategory = async( request, response )=>{
 
     await Category.findOne({ categoryId }) 
     .then(( category )=>{
-        response.status( 200 ).json({
-            success: true,
-            category
+        if( category ){
+            return response.status( 200 ).json({
+                success: true,
+                category
+            });    
+        }
+
+        response.status( 400 ).json({
+            success: false,
+            message: "Category Not found !! Invalid Category-id !!"
         });
     })
     .catch(( error )=>{

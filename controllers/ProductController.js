@@ -440,7 +440,8 @@ exports.deleteImageOfAProduct = async( request, response )=>{
                         if( productPhotos[imgIndex].photoId === imageId ){
                             product[index].productPhotos.splice( imgIndex, 1 );
 
-                            await category.save();
+                            // await category.save();
+                            category.save();
 
                             return response.status( 200 ).json({
                                 success: true,
