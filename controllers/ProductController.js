@@ -54,7 +54,7 @@ exports.addProduct = async( request, response )=>{
                 });
             }
         }
-        const { productName, productDescription, categoryId } = request.body;
+        const { productName, productDescription, productPrice, categoryId } = request.body;
 
         const productId = uuid();
 
@@ -66,6 +66,8 @@ exports.addProduct = async( request, response )=>{
                 productName,
                 productDescription,
                 productPhotos,
+                categoryId,
+                productPrice
             });
 
             category.save();
@@ -98,7 +100,6 @@ exports.getAllProductsFromAllCategories = async( request, response )=>{
             for( let product of category.products ){
                 products.push( product );
             }
-            
         }
 
         response.status( 200 ).json({
@@ -160,7 +161,6 @@ exports.getProductOfACategoryById = async( request, response )=>{
                     });
                 }
             }
-
             response.status( 400 ).json({
                 success: false,
                 message: "Product not found !! Please provide valid product-id !!"

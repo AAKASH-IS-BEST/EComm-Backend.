@@ -7,6 +7,10 @@ const productSchema = mongoose.Schema({
         maxlength: [ 40, "Product-id should be under 40 characters !!"],
         minlength: [ 3, "Product-id should be of atleast 3 character !!"],
     },
+    categoryId: {
+        type: String,
+        required: [ true, "Please provide category id associated with product..."]
+    },
     productName: {
         type: String,
         required: [ true, "Please provide a Product-name !!"],
@@ -18,6 +22,12 @@ const productSchema = mongoose.Schema({
         required: [ true, "Please provide a Product-description !!"],
         maxlength: [ 500, "Product-description should be under 40 characters !!"],
         minlength: [ 3, "Product-description should be of atleast 3 character !!"],
+    },
+    productPrice: {
+        type: Number,
+        required: [ true, "Please provide price of product !!"],
+        min: 1,
+        max: 10000000
     },
     productPhotos: [
         {
